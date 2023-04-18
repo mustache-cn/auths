@@ -53,7 +53,7 @@ func (q *qq) AccessToken() (OAuthAccessToken, error) {
 	}
 
 	// get openid and set auths
-	if q.auths.openId, err = q.openId(result.AccessToken); err != nil {
+	if q.auths.openId, err = q.openId(resData.AccessToken); err != nil {
 		return result, err
 	}
 
