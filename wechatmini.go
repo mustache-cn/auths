@@ -42,7 +42,7 @@ func (w *wechatMini) AccessToken() (OAuthAccessToken, error) {
 		ErrMsg  string `json:"errmsg,omitempty"`
 		// success result
 		AccessToken string `json:"access_token"`
-		ExpiresIn   int64  `json:"expires_in"`
+		ExpiresIn   string `json:"expires_in"`
 	}{}
 	// response to json
 	if err := res.JSON(&resData); err != nil {
@@ -57,6 +57,7 @@ func (w *wechatMini) AccessToken() (OAuthAccessToken, error) {
 	w.auths.accessToken = resData.AccessToken
 	// result value
 	result.AccessToken = resData.AccessToken
+	result.ExpiresIn = resData.ExpiresIn
 	return result, nil
 }
 

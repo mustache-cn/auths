@@ -48,7 +48,7 @@ func (w *weibo) AccessToken() (OAuthAccessToken, error) {
 		// success result
 		AccessToken string `json:"access_token"`
 		RemindIn    string `json:"remind_in"`
-		ExpiresIn   int64  `json:"expires_in"`
+		ExpiresIn   string `json:"expires_in"`
 		UID         string `json:"uid"`
 		IsRealName  string `json:"isRealName"`
 	}{}
@@ -62,8 +62,10 @@ func (w *weibo) AccessToken() (OAuthAccessToken, error) {
 	}
 	// auths value
 	w.auths.openId = resData.UID
+	w.auths.accessToken = resData.AccessToken
 	// result value
 	result.AccessToken = resData.AccessToken
+	result.ExpiresIn = resData.ExpiresIn
 	result.OpenId = resData.UID
 	return result, nil
 }

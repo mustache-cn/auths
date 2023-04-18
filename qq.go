@@ -56,9 +56,11 @@ func (q *qq) AccessToken() (OAuthAccessToken, error) {
 	if q.auths.openId, err = q.openId(resData.AccessToken); err != nil {
 		return result, err
 	}
+	q.auths.accessToken = resData.AccessToken
 
 	// result value
 	result.AccessToken = resData.AccessToken
+	result.ExpiresIn = resData.ExpiresIn
 	result.OpenId = q.auths.openId
 	return result, nil
 }

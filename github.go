@@ -63,6 +63,7 @@ func (g *github) AccessToken() (OAuthAccessToken, error) {
 
 	// result value
 	result.AccessToken = resData.AccessToken
+	result.ExpiresIn = "0"
 	return result, nil
 }
 

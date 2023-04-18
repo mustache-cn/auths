@@ -27,7 +27,7 @@ General AccountToken Return structure
 */
 type OAuthAccessToken struct {
 	AccessToken string
-	ExpiresIn   int64
+	ExpiresIn   string
 	OpenId      string
 	UnionId     string
 }

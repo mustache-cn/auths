@@ -45,7 +45,7 @@ func (w *wechat) AccessToken() (OAuthAccessToken, error) {
 		// success result
 		AccessToken  string `json:"access_token,omitempty"`
 		RefreshToken string `json:"refresh_token,omitempty"`
-		ExpiresIn    int64  `json:"expires_in"`
+		ExpiresIn    string `json:"expires_in"`
 		OpenId       string `json:"openid"`
 		UnionId      string `json:"unionid"`
 	}{}
@@ -65,6 +65,7 @@ func (w *wechat) AccessToken() (OAuthAccessToken, error) {
 	w.auths.openId = resData.OpenId
 	// result value
 	result.AccessToken = resData.AccessToken
+	result.ExpiresIn = resData.ExpiresIn
 	result.OpenId = resData.OpenId
 	result.UnionId = resData.UnionId
 	return result, nil
